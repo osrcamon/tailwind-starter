@@ -1,0 +1,29 @@
+1. npm install
+2. Your HTML file: index.html
+3. Your styles (SCSS): input.scss
+4. Config Tailwind: tailwind.config.js
+5. To start all this, in a terminal:
+  npm run css   ==> This will start a task that watches for changes on SCSS file, don't close it and it will generate CSS automatically
+  New terminal window, and:
+  npm run start ==> Will open your browser, your changes on HTML/CSS will be reloaded, you don't need to refresh the page all the time
+6. To change all this -> 
+  index.html => Beware in tailwind.config.js this line: 
+      content: ["./index.{html,js}"],
+    e.g to move to /public/index.html => 
+      content: ["./public/index.{html,js}"],
+    To create more html files under public folder, like public/contact.html =>
+      content: ["./public/*.{html,js}"],
+    And more files in different folders, under public, like public/blog/index.html, public/tea/green-tea.html => 
+      content: ["./public/**/*.{html,js}"],
+  To move the scss to a different file/folder, change package.json reference:
+      "css": "postcss input.scss --output output.css --verbose --watch",
+    And watch out the link in HTML pages:
+      <link href="./output.css" rel="stylesheet" />
+    e.g Rename the source file to style.scss and its output to style.css:
+      "css": "postcss style.scss --output style.css --verbose --watch",
+      And 
+       <link href="./style.css" rel="stylesheet" />
+    e.g Rename and move the source file to scss/custom.scss and its output to css/custom.css:
+      "css": "postcss scss/custom.scss --output css/custom.css --verbose --watch",
+      And 
+       <link href="./css/custom.css" rel="stylesheet" />
